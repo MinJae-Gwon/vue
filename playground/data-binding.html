@@ -10,7 +10,21 @@
     <div id="app">
         <p v-bind:id='uuid' v-bind:class='name'>{{num}}</p>
         <p>{{doubleNum}}</p>
+        <div v-if="loading">
+            Loading....
+        </div>
+        <div v-else>
+            User loged in
+        </div>
+        <div v-show="loading">
+            Loading
+            <!-- v-if 와 다른점 => show는 display none으로 바뀌고 , if는 아예 사라짐 -->
+        </div>
+        <!-- TODO: inputbox를 만들고 입력된 값을 p태그에 출력 해보세요-->
+        <input type="text" v-model="message">
+        <p>{{message}}</p>
     </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
@@ -20,6 +34,8 @@
             num: 10,
             uuid : 'abc1234',
             name: 'text-blue',
+            loading: true,
+            message: "",
         },
         computed: {
             doubleNum: function() {
